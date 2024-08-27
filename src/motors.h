@@ -5,6 +5,7 @@
 
 void setup_motors();
 void set_global_thrust();
+void set_correction();
 void get_total_thrust();
 void run_motors();
 #endif

@@ -2,13 +2,12 @@
 #define MAIN_H
 #include <Adafruit_MPU6050.h>
 
-struct BatteryData
+struct Battery
 {
-    int isBatConnected;
+    float lowestBat;
     float vBat1;
     float vBat2;
     float vBat3;
-    float cBat;
 };
 
 struct IMUData
@@ -61,8 +60,8 @@ extern float global_thrust;
 extern Adafruit_MPU6050 mpu;
 extern Remote remote_data;
 extern IMUData imu_data;
-extern BatteryData battery_data;
-extern PID pid_data;
+extern Battery battery;
+extern PID pid;
 extern Correction correction;
 extern Thrust thrust;
 
