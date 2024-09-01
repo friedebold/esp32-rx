@@ -43,3 +43,8 @@ void setup_wifi()
         return;
     }
 }
+
+void send_data()
+{
+    esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&battery, sizeof(battery));
+};

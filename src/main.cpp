@@ -35,6 +35,5 @@ void loop()
   set_correction();
   get_total_thrust();
   run_motors();
-
-    /* Serial.println(); */
+  send_data();
 }
