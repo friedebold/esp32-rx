@@ -46,7 +46,7 @@ void read_imu()
     // g_roll = g_roll - g.gyro.y * dt * RAD_TO_DEG;
 
     // Calculate Pitch and Roll
-    imu_data.pitch = GYRO_FACTOR * (imu_data.pitch - g.gyro.x * dt * RAD_TO_DEG) + ACC_FACTOR * a_pitch;
-    imu_data.roll = GYRO_FACTOR * (imu_data.roll - g.gyro.y * dt * RAD_TO_DEG) + ACC_FACTOR * a_roll;
-    imu_data.yaw = 0.0;
+    imu.pitch = GYRO_FACTOR * (imu.pitch - g.gyro.x * dt * RAD_TO_DEG) + ACC_FACTOR * a_pitch;
+    imu.roll = GYRO_FACTOR * (imu.roll - g.gyro.y * dt * RAD_TO_DEG) + ACC_FACTOR * a_roll;
+    imu.yaw = 0.0;
 };

@@ -10,7 +10,7 @@ struct Battery
     float vBat3;
 };
 
-struct IMUData
+struct IMU
 {
     float pitch;
     float roll;
@@ -59,7 +59,7 @@ extern float global_thrust;
 
 extern Adafruit_MPU6050 mpu;
 extern Remote remote_data;
-extern IMUData imu_data;
+extern IMU imu;
 extern Battery battery;
 extern PID pid;
 extern Correction correction;

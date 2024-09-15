@@ -40,8 +40,8 @@ void set_global_thrust()
     bool is_significant_change = raw_thrust_value > 0.05 || raw_thrust_value < -0.05;
 
     if (raw_is_armed == 1 &&
-        imu_data.roll > -60 && imu_data.roll < 60 && // Roll over protection
-        battery.lowestBat > 2.6                      // Low Battery protection
+        imu.roll > -60 && imu.roll < 60 && // Roll over protection
+        battery.lowestBat > 2.6            // Low Battery protection
     )
     {
         float thrust_diff = is_significant_change == 1 ? raw_thrust_value * 0.1 : 0;
@@ -57,7 +57,7 @@ float roll_error = 0.0;
 void set_correction()
 {
     float roll_target = 0.0;
-    roll_error = roll_target - imu_data.roll;
+    roll_error = roll_target - imu.roll;
 
     correction.roll.p = roll_error * pid.p;                           // 0.04
     correction.roll.i = correction.roll.i + roll_error * dt * pid.i;  // 0.01;
