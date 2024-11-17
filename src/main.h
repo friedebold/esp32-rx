@@ -5,6 +5,7 @@
 struct Battery
 {
     float lowestBat;
+    float cBat;
     float vBat1;
     float vBat2;
     float vBat3;

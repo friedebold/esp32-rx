@@ -5,12 +5,18 @@
 #include <esp_now.h>
 
 esp_now_peer_info_t peerInfo;
-uint8_t broadcastAddress[] = {0xA0, 0xA3, 0xB3, 0xAA, 0x6C, 0xA8};
+uint8_t broadcastAddress[] = {0xE4, 0x65, 0xB8, 0x19, 0xE1, 0x1C};
 
 struct ReceiveData
 {
     Remote remote_data;
     PID pid;
+};
+
+struct SendData
+{
+    Battery battery;
+    IMU imu;
 };
 
 void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
@@ -31,6 +37,7 @@ void setup_wifi()
         Serial.println("Error initializing ESP-NOW");
         return;
     }
+
     esp_now_register_recv_cb(OnDataRecv);
     // Register peer
     memcpy(peerInfo.peer_addr, broadcastAddress, 6);
@@ -46,5 +53,6 @@ void setup_wifi()
 
 void send_data()
 {
-    esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&battery, sizeof(battery));
+    SendData send_data = {battery, imu};
+    esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&send_data, sizeof(send_data));
 };
