@@ -2,10 +2,10 @@
 #include <motors.h>
 #include "DShotRMT.h"
 
-const auto MOTOR01_PIN = 17;
-const auto MOTOR02_PIN = 5;
-const auto MOTOR03_PIN = 18;
-const auto MOTOR04_PIN = 19;
+const auto MOTOR01_PIN = 16;
+const auto MOTOR02_PIN = 4;
+const auto MOTOR03_PIN = 2;
+const auto MOTOR04_PIN = 15;
 
 const auto DSHOT_MODE = DSHOT300;
 

@@ -17,6 +17,8 @@ struct SendData
 {
     Battery battery;
     IMU imu;
+    float global_thrust;
+    Thrust thrust;
 };
 
 void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
@@ -53,6 +55,6 @@ void setup_wifi()
 
 void send_data()
 {
-    SendData send_data = {battery, imu};
+    SendData send_data = {battery, imu, global_thrust, thrust};
     esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&send_data, sizeof(send_data));
 };

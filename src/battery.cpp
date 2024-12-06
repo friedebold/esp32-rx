@@ -16,28 +16,28 @@ void setup_battery()
 }
 
 float vPerAmp = 0.045;
-float normalizationConstant = -32.4;
+float normalizationConstant = -33;
 float cBatOld = 0;
 
 void read_battery()
 {
     int vBat1Input = analogRead(VBAT1_PIN);
     float vBat1Voltage = vBat1Input * (VCC / 4095.0);
-    battery.vBat1 = vBat1Voltage; //* 1.368627451;
+    battery.vBat1 = vBat1Voltage * 1.5167286245;
 
     int vBat2Input = analogRead(VBAT2_PIN);
     float vBat2Voltage = vBat2Input * (VCC / 4095.0);
-    battery.vBat2 = vBat2Voltage * 1.5936073059;
+    battery.vBat2 = vBat2Voltage * 1.7361702128;
 
     int vBat3Input = analogRead(VBAT3_PIN);
     float vBat3Voltage = vBat3Input * (VCC / 4095.0);
-    battery.vBat3 = vBat3Voltage * 1.4936170213;
+    battery.vBat3 = vBat3Voltage * 1.5;
 
     int cBatInput = analogRead(CBAT_PIN);
-    float cBatVoltage = cBatInput * (3.31 / 4095.0);
+    float cBatVoltage = cBatInput * (VCC / 4095.0);
     float rawCBat = cBatVoltage * (1 / vPerAmp) + normalizationConstant;
     battery.cBat = cBatOld * 0.9 + rawCBat * 0.1;
     cBatOld = battery.cBat;
 
     battery.lowestBat = min(battery.vBat1, min(battery.vBat2, battery.vBat3));
-}  
+}
